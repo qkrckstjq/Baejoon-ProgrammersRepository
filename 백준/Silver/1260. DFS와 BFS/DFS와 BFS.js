@@ -40,14 +40,6 @@ while(stack.length !== 0 || queue.length !== 0) {
                 stack.push(i);
             }
         }
-        // if(stack.length == 0) {
-        //     for(let i = 1; i < DFS_V.length; i++) {
-        //         if(!DFS_V[i]){
-        //             stack.push(i);
-        //             break;
-        //         }
-        //     }
-        // }
     }
     if(queue.length !== 0) {
         let BFSNode = queue.shift();
@@ -60,14 +52,6 @@ while(stack.length !== 0 || queue.length !== 0) {
                 queue.push(i);
             }
         }
-        // if(queue.length == 0) {
-        //     for(let i = 1; i < BFS_V.length; i++) {
-        //         if(!BFS_V[i]){
-        //             queue.push(i);
-        //             break;
-        //         }
-        //     }
-        // }
     }
 }
 let result = `${dfs}\n${bfs}`
