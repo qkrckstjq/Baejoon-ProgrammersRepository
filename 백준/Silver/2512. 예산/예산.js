@@ -8,10 +8,7 @@ const MaxCost = +input[2]
 
 while(start <= end) {
     let mid = Math.floor((start+end)/2);
-    let total = 0;
-    for(let i = 0; i < arr.length; i++){
-        total += mid > arr[i] ? arr[i] : mid
-    }
+    let total = arr.reduce((acc,cur)=>acc + (mid > cur ? cur : mid),0)
     if(total <= MaxCost) {
         result = mid;
         start = mid + 1;
