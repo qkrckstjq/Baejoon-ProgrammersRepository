@@ -1,0 +1,28 @@
+const fs = require("fs");
+const input = fs
+  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "./test.txt")
+  .toString()
+  .trim()
+  .split("\n");
+
+let n = Number(input[0].split(" ")[0]);
+let arr = input[1].split(" ").map(Number);
+let m = Number(input[2]);
+
+let start = 1;
+let end = arr.reduce((a, b) => Math.max(a, b));
+let result = 0;
+
+while (start <= end) {
+  let mid = ~~((start + end) / 2);
+  let total = 0;
+  arr.forEach((el) => (total += Math.min(mid, el)));
+  if (total <= m) {
+    result = mid;
+    start = mid + 1;
+  } else {
+    end = mid - 1;
+  }
+}
+
+console.log(result);
