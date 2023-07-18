@@ -1,28 +1,22 @@
-const fs = require("fs");
-const input = fs
-  .readFileSync(process.platform === "linux" ? "/dev/stdin" : "./test.txt")
-  .toString()
-  .trim()
-  .split("\n");
+const input = require('fs').readFileSync(process.platform === "linux" ? "/dev/stdin" : "./input.txt").toString().trim().split("\n");
 
-let n = Number(input[0].split(" ")[0]);
-let arr = input[1].split(" ").map(Number);
-let m = Number(input[2]);
-
+let arr = input[1].split(' ').map(Number)
 let start = 1;
-let end = arr.reduce((a, b) => Math.max(a, b));
+let end = Math.max(...arr);
 let result = 0;
+const MaxCost = +input[2]
 
-while (start <= end) {
-  let mid = ~~((start + end) / 2);
-  let total = 0;
-  arr.forEach((el) => (total += Math.min(mid, el)));
-  if (total <= m) {
-    result = mid;
-    start = mid + 1;
-  } else {
-    end = mid - 1;
-  }
+while(start <= end) {
+    let mid = Math.floor((start+end)/2);
+    let total = 0;
+    for(let i = 0; i < arr.length; i++){
+        total += mid > arr[i] ? arr[i] : mid
+    }
+    if(total <= MaxCost) {
+        result = mid;
+        start = mid + 1;
+    } else {
+        end = mid - 1;
+    }
 }
-
-console.log(result);
+console.log(result)
