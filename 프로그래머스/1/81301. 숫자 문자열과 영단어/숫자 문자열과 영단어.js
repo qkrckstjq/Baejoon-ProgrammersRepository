@@ -1,31 +1,11 @@
 function solution(s) {
-    let result = "";
-    const sample = ["zero","one","two","three","four","five","six","seven","eight","nine"];
-    function findN (w) {        
-        for(let i = 0; i < sample.length; i++) {
-            if(w === sample[i]) {
-                return true;
-            }
-        }
-        return false;
+    let numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    var answer = s;
+
+    for(let i=0; i< numbers.length; i++) {
+        let arr = answer.split(numbers[i]);
+        answer = arr.join(i);
     }
-    for(let i = 0; i < s.length; i++) {
-        let word = "";
-        if(isNaN(Number(s[i]))) {
-            while(isNaN(Number(s[i])) && !findN(word)) {
-                word+=s[i];
-                i++;
-            }
-            console.log(word)
-            for(let k = 0; k < sample.length; k++) {
-                if(sample[k] === word) {
-                    result+=String(k);
-                }
-            }
-            i--;
-        } else {
-            result+=s[i];
-        }
-    }
-    return Number(result);
+
+    return Number(answer);
 }
