@@ -8,7 +8,6 @@ class Solution {
         if(isImpossible(x,y,r,c,k)) {
             return "impossible";
         }
-        String[] min = {"d","l","r","u"};
         
         String[] move = {"d","l","r","u"};
         int[] moveY = {1,0,0,-1};
