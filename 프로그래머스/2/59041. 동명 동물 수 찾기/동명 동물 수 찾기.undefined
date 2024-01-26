@@ -1,0 +1,9 @@
+-- 코드를 입력하세요
+with table1 as (
+    SELECT NAME, count(*) as COUNT from ANIMAL_INS
+    where NAME is not NULL
+    group by NAME
+)
+select * from table1 t
+where t.COUNT > 1
+order by t.name
