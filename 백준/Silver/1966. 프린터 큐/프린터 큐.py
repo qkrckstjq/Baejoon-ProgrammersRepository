@@ -1,31 +1,25 @@
-import heapq
+def st():
+    temp = 0
+    turn = 0
 
-T = int(input())
+    papers, want = map(int, input().split())
+    numbers = list(map(int, input().split()))
 
-for i in range(T):
-    NM = list(map(int, input().split(" ")))
-    Nodes = NM[0]
-    targetNode = NM[1]
-    indexValue = list(enumerate(map(int, input().split(" "))))
-    maxPQ = []
-    for i in range(len(indexValue)):
-        heapq.heappush(maxPQ, -indexValue[i][1])
+    numbers[want], temp = temp, numbers[want]
+    while(numbers[0]!=0 or temp<max(numbers)):
+        #print(numbers)
+        max_c = max(numbers)
+        popped = numbers.pop(0)
+        if max_c!=popped or max_c<temp:
+            numbers.append(popped)
+        else:
+            turn +=1
+            #print(turn)
+    turn+=1
+    return turn
 
-    count = 1
-    front = 0
-    peek = -heapq.heappop(maxPQ)
-    while True:
-        while indexValue[front][1] != peek:
-            pushBack = indexValue[front]
-            indexValue.append(pushBack)
-            front += 1
 
-        if indexValue[front][0] == targetNode:
-            print(count)
-            break
+num = int(input())
 
-        if indexValue[front][1] == peek:
-            count += 1
-            front += 1
-            peek = -heapq.heappop(maxPQ)
-            continue
+for i in range(num):
+    print(st())
