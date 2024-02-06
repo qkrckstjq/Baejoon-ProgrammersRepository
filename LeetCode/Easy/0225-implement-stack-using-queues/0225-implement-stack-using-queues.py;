@@ -10,16 +10,9 @@ class MyStack(object):
         self.stack.append(x)
 
     def pop(self):
-        if len(self.stack) != 0:
-            return self.stack.pop()
-        else:
-            return None
+        return self.stack.pop()
     def top(self):
-        if len(self.stack) != 0:
-            # 큐의 마지막 원소는 직접 인덱스로 접근할 수 없음
-            return self.stack[len(self.stack)-1]
-        else:
-            return None  # 큐가 비어있는 경우 None 반환
+        return self.stack[len(self.stack)-1]
 
     def empty(self):
         return len(self.stack) == 0
