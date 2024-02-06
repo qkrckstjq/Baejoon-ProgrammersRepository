@@ -1,0 +1,17 @@
+class Solution:
+    def dailyTemperatures(self, T):
+        result = []
+        for i in T:
+            result.append(0)
+        waitingDate = []
+
+        for curIndex in range(len(T)):
+            if len(waitingDate) != 0:
+                while T[waitingDate[len(waitingDate)-1]] < T[curIndex]:
+                    waitingDateIndex = waitingDate.pop()
+                    result[waitingDateIndex] = curIndex - waitingDateIndex
+                    if len(waitingDate) == 0:
+                        break
+            waitingDate.append(curIndex)
+
+        return result
