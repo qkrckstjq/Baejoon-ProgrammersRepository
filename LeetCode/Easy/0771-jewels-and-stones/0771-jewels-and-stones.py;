@@ -1,0 +1,14 @@
+class Solution:
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        jewelsTemp = list(jewels)
+        jewelsHashMap = {}
+        for jewel in jewelsTemp:
+            jewelsHashMap[jewel] = True
+
+        count = 0
+        splitedStones = list(stones)
+        for stone in splitedStones:
+            if stone in jewelsHashMap:
+                count += 1
+
+        return count
