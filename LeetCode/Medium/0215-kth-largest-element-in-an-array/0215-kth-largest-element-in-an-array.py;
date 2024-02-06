@@ -4,8 +4,6 @@
 #         return nums[k - 1]
 
 from collections import deque
-
-
 class maxPQ(object):
     @staticmethod
     def getParentIndex(index):
@@ -28,14 +26,12 @@ class maxPQ(object):
         self.sorting(len(self.queue) - 1)
 
     def sorting(self, index):
+        curIndex = index
         parentIndex = maxPQ.getParentIndex(index)
-        if index == 1:
-            return
-        if self.queue[index] <= self.queue[parentIndex]:
-            return
-        self.swap(index, parentIndex)
-        self.sorting(parentIndex)
-
+        while curIndex != 1 and self.queue[curIndex] > self.queue[parentIndex]:
+            self.swap(curIndex, parentIndex)
+            curIndex = parentIndex
+            parentIndex = maxPQ.getParentIndex(parentIndex)
     def pop(self):
         popped = self.queue[1]
         self.queue[1] = self.queue[-1]
@@ -43,44 +39,24 @@ class maxPQ(object):
         self.whenPop(1)
         return popped
 
-    def whenPop(self, curIndex):
-        leftChildIndex = maxPQ.getLeftChildIndex(curIndex)
-        rightChildIndex = maxPQ.getRightChildIndex(curIndex)
+    def whenPop(self, index):
+        curIndex = index
+        leftChildIndex = maxPQ.getLeftChildIndex(index)
+        rightChildIndex = maxPQ.getRightChildIndex(index)
 
-        whenOnlyLeftChild = False
-        onlyLeftChildBig = False
-        onlyRightChildBig = False
-        whenBothBigger = False
-        curIndexBigger = True
+        while leftChildIndex < len(self.queue):
+            maxChildIndex = leftChildIndex
 
-        if len(self.queue) == 3 and self.queue[1] < self.queue[2]:
-            whenOnlyLeftChild = True
+            if rightChildIndex < len(self.queue) and self.queue[rightChildIndex] > self.queue[leftChildIndex]:
+                maxChildIndex = rightChildIndex
 
+            if self.queue[curIndex] >= self.queue[maxChildIndex]:
+                break
 
-        if leftChildIndex < len(self.queue) and rightChildIndex < len(self.queue):
-            onlyLeftChildBig = self.queue[leftChildIndex] > self.queue[curIndex] >= self.queue[rightChildIndex]
-            onlyRightChildBig = self.queue[rightChildIndex] > self.queue[curIndex] >= self.queue[leftChildIndex]
-            curIndexBigger = self.queue[curIndex] >= self.queue[leftChildIndex] >= self.queue[rightChildIndex]
-            whenBothBigger = self.queue[leftChildIndex] > self.queue[curIndex] and self.queue[rightChildIndex] > self.queue[curIndex]
-
-        if whenOnlyLeftChild:
-            self.swap(leftChildIndex, curIndex)
-            return self.whenPop(leftChildIndex)
-        if onlyLeftChildBig:
-            self.swap(leftChildIndex, curIndex)
-            return self.whenPop(leftChildIndex)
-        if onlyRightChildBig:
-            self.swap(rightChildIndex, curIndex)
-            return self.whenPop(rightChildIndex)
-        if whenBothBigger:
-            if self.queue[leftChildIndex] >= self.queue[rightChildIndex]:
-                self.swap(leftChildIndex, curIndex)
-                return self.whenPop(leftChildIndex)
-            if self.queue[rightChildIndex] > self.queue[leftChildIndex]:
-                self.swap(rightChildIndex, curIndex)
-                return self.whenPop(rightChildIndex)
-        if curIndexBigger:
-            return
+            self.swap(curIndex, maxChildIndex)
+            curIndex = maxChildIndex
+            leftChildIndex = maxPQ.getLeftChildIndex(curIndex)
+            rightChildIndex = maxPQ.getRightChildIndex(curIndex)
 
     def swap(self, i, j):
         temp = self.queue[i]
