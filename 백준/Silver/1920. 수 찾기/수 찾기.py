@@ -1,12 +1,14 @@
-n = int(input())
-arr1 = map(int, input().split())
-arr1 = set(arr1)
+base_len = int(input())
+base_dict = set(input().split(" "))
+comp_len = int(input())
+comp_str = input().split(" ")
 
-m = int(input())
-arr2 = map(int, input().split())
 
-for num in arr2:
-    if num in arr1:
+result = ""
+for s in comp_str:
+    if s in base_dict:
         print('1')
-    else:
+    if not s in base_dict:
         print('0')
+
+# print(result)
