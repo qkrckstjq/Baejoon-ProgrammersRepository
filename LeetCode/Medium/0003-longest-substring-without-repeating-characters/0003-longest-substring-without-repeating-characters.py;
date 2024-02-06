@@ -1,0 +1,21 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        uniqueChar = {}
+        result = 0
+        max = 0
+        i = 0
+        startIndex = i
+        while i < len(s):
+            if s[i] in uniqueChar:
+                i = startIndex
+                startIndex = i+1
+                uniqueChar = {}
+                result = 0
+            if not s[i] in uniqueChar:
+                uniqueChar[s[i]] = True
+                result += 1
+                if max < result:
+                    max = result
+            i += 1
+
+        return max
