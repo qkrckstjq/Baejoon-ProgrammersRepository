@@ -1,6 +1,104 @@
+# class Solution:
+#     def findKthLargest(self, nums: List[int], k: int) -> int:
+#         list.sort(nums, reverse=True)
+#         return nums[k - 1]
+
+from collections import deque
+
+
+class maxPQ(object):
+    @staticmethod
+    def getParentIndex(index):
+        return index // 2
+
+    @staticmethod
+    def getLeftChildIndex(index):
+        return index * 2
+
+    @staticmethod
+    def getRightChildIndex(index):
+        return (index * 2) + 1
+
+    def __init__(self):
+        self.queue = deque()
+        self.queue.append([])
+
+    def add(self, value):
+        self.queue.append(value)
+        self.sorting(len(self.queue) - 1)
+
+    def sorting(self, index):
+        parentIndex = maxPQ.getParentIndex(index)
+        if index == 1:
+            return
+        if self.queue[index] <= self.queue[parentIndex]:
+            return
+        self.swap(index, parentIndex)
+        self.sorting(parentIndex)
+
+    def pop(self):
+        popped = self.queue[1]
+        self.queue[1] = self.queue[-1]
+        self.queue.pop()
+        self.whenPop(1)
+        return popped
+
+    def whenPop(self, curIndex):
+        leftChildIndex = maxPQ.getLeftChildIndex(curIndex)
+        rightChildIndex = maxPQ.getRightChildIndex(curIndex)
+
+        whenOnlyLeftChild = False
+        onlyLeftChildBig = False
+        onlyRightChildBig = False
+        whenBothBigger = False
+        curIndexBigger = True
+
+        if len(self.queue) == 3 and self.queue[1] < self.queue[2]:
+            whenOnlyLeftChild = True
+
+
+        if leftChildIndex < len(self.queue) and rightChildIndex < len(self.queue):
+            onlyLeftChildBig = self.queue[leftChildIndex] > self.queue[curIndex] >= self.queue[rightChildIndex]
+            onlyRightChildBig = self.queue[rightChildIndex] > self.queue[curIndex] >= self.queue[leftChildIndex]
+            curIndexBigger = self.queue[curIndex] >= self.queue[leftChildIndex] >= self.queue[rightChildIndex]
+            whenBothBigger = self.queue[leftChildIndex] > self.queue[curIndex] and self.queue[rightChildIndex] > self.queue[curIndex]
+
+        if whenOnlyLeftChild:
+            self.swap(leftChildIndex, curIndex)
+            return self.whenPop(leftChildIndex)
+        if onlyLeftChildBig:
+            self.swap(leftChildIndex, curIndex)
+            return self.whenPop(leftChildIndex)
+        if onlyRightChildBig:
+            self.swap(rightChildIndex, curIndex)
+            return self.whenPop(rightChildIndex)
+        if whenBothBigger:
+            if self.queue[leftChildIndex] >= self.queue[rightChildIndex]:
+                self.swap(leftChildIndex, curIndex)
+                return self.whenPop(leftChildIndex)
+            if self.queue[rightChildIndex] > self.queue[leftChildIndex]:
+                self.swap(rightChildIndex, curIndex)
+                return self.whenPop(rightChildIndex)
+        if curIndexBigger:
+            return
+
+    def swap(self, i, j):
+        temp = self.queue[i]
+        self.queue[i] = self.queue[j]
+        self.queue[j] = temp
+
+
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        list.sort(nums, reverse=True)
-        return nums[k - 1]
-        
-        
+    def findKthLargest(self, nums, k):
+        maxHeap = maxPQ()
+        for number in nums:
+            maxHeap.add(number)
+
+        result = 0
+        for i in range(k):
+            result = maxHeap.pop()
+
+        return result
+
+test = Solution()
+print(test.findKthLargest([7,6,5,4,3,2,1],5))
