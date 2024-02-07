@@ -1,11 +1,12 @@
-from collections import Counter, OrderedDict
-
+from collections import defaultdict
+import heapq
+from typing import List
 
 class Solution:
-    def topKFrequent(self, nums, k):
-        result = []
-        number_counter = Counter(nums)
-        set_ordered_counter = sorted(number_counter.items(), key=lambda x: x[1], reverse=True)
-        for i in range(k):
-            result.append(set_ordered_counter[i][0])
-        return result
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dict_freq = defaultdict(int)
+        for i in nums:
+            dict_freq[i] += 1
+        largest_k = heapq.nlargest(k, dict_freq.items(), key = lambda item: item[1])
+
+        return list(map(lambda x: x[0], largest_k))
