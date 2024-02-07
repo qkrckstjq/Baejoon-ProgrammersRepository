@@ -1,15 +1,11 @@
+from collections import Counter, OrderedDict
+
+
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        n_count = {}
-        for num in nums:
-            if num in n_count:
-                n_count[num] += 1
-            else:
-                n_count[num] = 1
-
-        sorted_counts = sorted(n_count.items(), key=lambda x: x[1], reverse=True)
-
+    def topKFrequent(self, nums, k):
         result = []
+        number_counter = Counter(nums)
+        set_ordered_counter = sorted(number_counter.items(), key=lambda x: x[1], reverse=True)
         for i in range(k):
-            result.append(sorted_counts[i][0])
+            result.append(set_ordered_counter[i][0])
         return result
