@@ -1,12 +1,9 @@
-from collections import defaultdict
-import heapq
-from typing import List
+from collections import Counter
 
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        dict_freq = defaultdict(int)
-        for i in nums:
-            dict_freq[i] += 1
-        largest_k = heapq.nlargest(k, dict_freq.items(), key = lambda item: item[1])
-
-        return list(map(lambda x: x[0], largest_k))
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        count = Counter(nums)
+        most_common = count.most_common(k)
+        top_k_frequent = [item[0] for item in most_common]
+        
+        return top_k_frequent
