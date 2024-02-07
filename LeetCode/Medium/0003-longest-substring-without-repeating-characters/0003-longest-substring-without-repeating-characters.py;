@@ -1,20 +1,13 @@
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        uniqueChar = {}
-        count = 0
-        max = 0
-        i = 0
-        startIndex = i
-        while i < len(s):
-            if s[i] in uniqueChar:
-                i = startIndex
-                startIndex = i+1
-                uniqueChar = {}
-                count = 0
-            if not s[i] in uniqueChar:
-                uniqueChar[s[i]] = True
-                count += 1
-                max = count if max < count else max
-            i += 1
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        char_list = {}
+        start = maxLen = 0
 
-        return max
+        for i, char in enumerate(s):
+            if char in char_list and start <= char_list[char]:
+                start = char_list[char] + 1
+            else:
+                maxLen = max(maxLen, i - start + 1)
+            char_list[char] = i
+
+        return maxLen
