@@ -4,5 +4,7 @@ class Solution:
         for i in range(len(mat)):
             heapq.heappush(min_heap, (Counter(mat[i])[1], i))
 
-        heapq_k = heapq.nsmallest(k, min_heap)
-        return list(map(lambda x: x[1],heapq_k))
+        result = []
+        for i in range(k):
+            result.append(heapq.heappop(min_heap))
+        return list(map(lambda x: x[1], result))
