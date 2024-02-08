@@ -1,15 +1,12 @@
+from collections import Counter
+
 class Solution:
     def kWeakestRows(self, mat, k: int):
         rowSum = []
         for i in range(len(mat)):
             key_value = {}
-            i_j = {'1': 0, '0': 0}
-            for value in mat[i]:
-                if value == 1:
-                    i_j['1'] += 1
-                if value == 0:
-                    i_j['0'] += 1
-            key_value[i] = i_j['0']
+            i_j = Counter(mat[i])
+            key_value[i] = i_j[0]
             rowSum.append(key_value)
 
         sorted_by_j = sorted(rowSum, key=lambda x: list(x.values())[0], reverse=True)
