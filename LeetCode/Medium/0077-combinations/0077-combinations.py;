@@ -2,32 +2,15 @@ from typing import List
 
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        if n < 2:
-            return [[1]]
-        
-        stack = []
-        result = []
-        
-        def backtrack(start, cur_nums):
-            if len(cur_nums) == k:
-                result.append(cur_nums)
+        def backtrack(start, path):
+            if len(path) == k:
+                result.append(path[:])
                 return
-            for num in range(start, n):
-                temp_nums = cur_nums + [num+1]
-                backtrack(num + 1, temp_nums)
-        
-        for num in range(n-(k-1)):
-            stack.append([num+1])
-        
-        while stack:
-            cur_nums = stack.pop()
-            last_num = cur_nums[-1]
-            if len(cur_nums) == k:
-                result.append(cur_nums)
-            for num in range(last_num, n):
-                temp_nums = list(cur_nums)
-                if (num+1) not in temp_nums:
-                    temp_nums.append(num+1)
-                    stack.append(temp_nums)
-        
+            for i in range(start, n + 1):
+                path.append(i)
+                backtrack(i + 1, path)
+                path.pop()
+
+        result = []
+        backtrack(1, [])
         return result
