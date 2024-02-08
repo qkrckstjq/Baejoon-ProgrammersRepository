@@ -22,7 +22,7 @@ class Solution:
             for num in range(last_num, n):
                 temp_nums = list(cur_nums)
                 temp_set = set(cur_set)
-                if (num+1) not in cur_set:
+                if (num+1) not in temp_set:
                     temp_nums.append(num+1)
                     temp_set.add(num+1)
                     stack.append(temp_nums)
