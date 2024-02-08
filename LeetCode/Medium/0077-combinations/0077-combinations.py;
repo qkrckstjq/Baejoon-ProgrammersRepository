@@ -7,9 +7,8 @@ class Solution:
         set_stack = []
         result = []
         for num in range(n-(k-1)):
-            temp_set = {num+1}
             stack.append([num+1])
-            set_stack.append(temp_set)
+            set_stack.append({num+1})
         
         while len(stack) != 0:
             cur_nums = stack.pop()
