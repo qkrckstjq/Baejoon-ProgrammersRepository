@@ -1,43 +1,39 @@
-import heapq, sys
-from collections import defaultdict
+import sys
+input = sys.stdin.readline
 
-def sInput():
-    return sys.stdin.readline().strip()
+def find_parent(parent, x):
+    """ 부모 노드를 찾기 위해 재귀 수행"""
+    if parent[x] != x:
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
 
-v_e = sInput().split(" ")
+def union_parent(parent, a, b):
+    """ 부모 노드 비교 후 부모 노드 업데이트 """
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
+        
+if __name__ == "__main__":
+    V, E = map(int, input().split()) # make graph
+    graph = [] 
+    for _ in range(E):
+        a, b, cost = map(int, input().split())
+        graph.append([a, b, cost])
+    graph.sort(key=lambda x:x[2])
 
-vertex = int(v_e[0])
-edge = int(v_e[1])
-graph = defaultdict(dict)
-min_heap = []
-visit = set()
-for i in range(edge):
-    src, dst, w = list(map(int, sInput().split(" ")))
-    graph[src][dst] = w
-    graph[dst][src] = w
+    parent = [0] * (V+1) # make parent table
+    for i in range(1, V+1):
+        parent[i] = i
 
-result = 0
-heapq.heappush(min_heap, (0, 1)) #튜플형식 (가중치, 정점) 힙에서는 첫번째 인자를 기준으로 비교를 한단다
+    costs, mst = 0, [] # get mst
+    for i in range(E):
+        a, b, cost = graph[i]
+        if find_parent(parent, a) != find_parent(parent, b): # check cycle
+            union_parent(parent, a, b)
+            mst.append((a, b))
+            costs += cost
 
-while min_heap:
-    cur_min = heapq.heappop(min_heap)
-    cur_vertex = cur_min[1]
-    if cur_vertex in visit:
-        continue
-
-    result += cur_min[0]
-    visit.add(cur_vertex)
-    for dst in graph[cur_vertex]:
-        if dst not in visit:
-            heapq.heappush(min_heap, (graph[cur_vertex][dst], dst))
-
-
-print(result)
-
-
-
-
-
-
-
-
+    print (costs)
