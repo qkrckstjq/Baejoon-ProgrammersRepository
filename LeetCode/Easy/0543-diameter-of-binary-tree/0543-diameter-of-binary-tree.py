@@ -5,6 +5,7 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+    height = {}
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         max_diameter = 0
         stack = [root]
@@ -31,6 +32,10 @@ class Solution:
     def get_max_depth(self, node):
         if node is None:
             return 0
+        
+        if node in self.height:
+            return height[node]
+        
         result = 0
         diameter = 0
         stack = [[node, diameter]]
@@ -43,4 +48,5 @@ class Solution:
                 stack.append([cur_node.left, cur_diameter + 1])
             if cur_node.right is not None:
                 stack.append([cur_node.right, cur_diameter + 1])
+        self.height[node] = diameter
         return diameter + 1
