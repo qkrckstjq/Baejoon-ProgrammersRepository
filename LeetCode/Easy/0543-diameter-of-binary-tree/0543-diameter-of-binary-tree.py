@@ -9,7 +9,7 @@ class Solution:
         if not root:
             return 0
 
-        stack = [(root, False)]
+        stack = [[root, False]]
         d = 0
         height_dict = {None: 0}
 
@@ -23,9 +23,9 @@ class Solution:
                     d = max(d, left_height + right_height)
                     height_dict[node] = max(left_height, right_height) + 1
                 else:
-                    stack.append((node, True))
-                    stack.append((node.right, False))
-                    stack.append((node.left, False))
+                    stack.append([node, True])
+                    stack.append([node.right, False])
+                    stack.append([node.left, False])
             else:
                 height_dict[node] = 0
 
