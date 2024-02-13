@@ -1,41 +1,55 @@
 import sys
 
+graph = {}
+stack = []
 
-def sInput():
+
+# 입력 함수
+def sys_input():
     return sys.stdin.readline().strip()
 
 
-computers = int(sInput())
-vertex_num = int(sInput())
-graph = dict()
-visit = dict()
-
-for i in range(vertex_num):
-    vertex = sInput().split(" ")
-    src = vertex[0]
-    dst = vertex[1]
-    visit[src] = False
-    visit[dst] = False
-    if src in graph:
-        graph[src].append(dst)
+# 그래프 생성 함수
+def make_graph(key, value):
+    if key in graph:
+        graph[key].append(value)
     else:
-        graph[src] = [dst]
-    if dst in graph:
-        graph[dst].append(src)
+        graph[key] = [value]
+    
+    if value in graph:
+        graph[value].append(key)
     else:
-        graph[dst] = [src]
+        graph[value] = [key]
 
 
-result = 0
-stack = ['1']
-visit['1'] = True
-while len(stack) != 0:
-    cur_src = stack.pop()
-    if cur_src in graph:
-        for next_src in graph[cur_src]:
-            if not visit[next_src]:
-                visit[next_src] = True
-                stack.append(next_src)
-                result += 1
+# 반복문 DFS 함수
+def dfs():
+    discovered = []
+    stack.append(1)
 
-print(result)
+    while stack:
+        computer = stack.pop()
+
+        if computer not in discovered:
+            discovered.append(computer)
+
+            neighbors = graph.get(computer)
+            if neighbors is not None:
+                for neighbor in neighbors:
+                    stack.append(neighbor)
+
+    return len(discovered) - 1
+
+
+# 입력
+count = int(sys_input())
+pair = int(sys_input())
+
+for _ in range(pair):
+    input_data = sys_input()
+    key, value = map(int, input_data.split())
+
+    make_graph(key, value)
+
+# 출력
+print(dfs())
