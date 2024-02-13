@@ -3,42 +3,36 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-
-
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        node_i = list1
-        node_j = list2
-
-        if node_i == None:
-            return node_j
-        if node_j == None:
-            return node_i
-
+        if list1 is None:
+            return list2
+        if list2 is None:
+            return list1
+        
         merged_node = None
-
-        if node_i.val < node_j.val:
-            merged_node = node_i
-            node_i = node_i.next
+        if list1.val < list2.val:
+            merged_node = list1
+            list1 = list1.next
         else:
-            merged_node = node_j
-            node_j = node_j.next
-
-        cur_node = merged_node
-        while node_i != None and node_j != None:
-            if node_i.val >= node_j.val:
-                cur_node.next = node_j
-                node_j = node_j.next
+            merged_node = list2
+            list2 = list2.next    
+        
+        start_node = merged_node
+        
+        while list1 is not None and list2 is not None:
+            if list1.val < list2.val:
+                merged_node.next = list1
+                list1 = list1.next
             else:
-                cur_node.next = node_i
-                node_i = node_i.next
-            cur_node = cur_node.next
-
-        if node_i != None:
-            cur_node.next = node_i
-
-        if node_j != None:
-            cur_node.next = node_j
-
-        return merged_node
-
+                merged_node.next = list2
+                list2 = list2.next
+            merged_node = merged_node.next
+        
+        if list1 is None:
+            merged_node.next = list2
+        else:
+            merged_node.next = list1
+        
+        return start_node
+        
