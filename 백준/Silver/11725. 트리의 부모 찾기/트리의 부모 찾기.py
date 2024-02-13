@@ -1,5 +1,5 @@
 import sys
-from collections import deque, defaultdict
+from collections import defaultdict
 def s_input():
     return sys.stdin.readline().strip()
 
