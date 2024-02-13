@@ -15,7 +15,7 @@ def make_graph(key, value):
         graph[key].append(value)
     else:
         graph[key] = [value]
-    
+
     if value in graph:
         graph[value].append(key)
     else:
@@ -24,14 +24,14 @@ def make_graph(key, value):
 
 # 반복문 DFS 함수
 def dfs():
-    discovered = []
+    discovered = set()
     stack.append(1)
 
     while stack:
         computer = stack.pop()
 
         if computer not in discovered:
-            discovered.append(computer)
+            discovered.add(computer)
 
             neighbors = graph.get(computer)
             if neighbors is not None:
