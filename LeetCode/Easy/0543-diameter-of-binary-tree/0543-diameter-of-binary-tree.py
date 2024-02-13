@@ -19,10 +19,6 @@ class Solution:
             
         left_len = self.recursion_tree(root.left)
         right_len = self.recursion_tree(root.right)
-        # print("현재 루트", root)
-        # print("현재 left",left_len)
-        # print("현재 right",right_len)
-        # print("현재 max_len", self.max_len)
         self.memo[root] = left_len + right_len + 1
         self.max_len = max(left_len + right_len, self.max_len)
         return max(left_len, right_len) + 1
