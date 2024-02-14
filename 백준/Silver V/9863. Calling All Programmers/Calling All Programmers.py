@@ -1,29 +1,21 @@
-import sys
-from collections import deque
-
-def s_input():
-    return sys.stdin.readline()
-
-result = []
-
 while True:
-    n, m, k = list(map(int, s_input().split(" ")))
-    queue = deque()
-    if n == 0 and m == 0 and k == 0:
+# count = 0
+    n, m, k = map(int, input().split())
+    queue = []
+
+    for i in range(n):
+        queue.append(i+1)
+
+    if n == 0 and m == 0 and k == 0: # 10 7 5
         break
+# 0 1 2 3 4 5 6 7 8 9
+# 1 2 3 4 5 6 7 8 9 10
+    for i in range(k): # 0 ~ 4
+        for j in range(m-1): # 0 ~ 6
+            queue.append(queue.pop(0))
 
-    for i in range(1, n + 1, 1):
-        queue.append(i)
-
-    winner = 0
-    for _ in range(k):
-        for i in range(m):
-            popped = queue.popleft()
-            if i == m - 1:
-                winner = popped
-            else:
-                queue.append(popped)
-    result.append(winner)
-
-for a in result:
-    print(a)
+        if i == k-1:
+            print(queue.pop(0))
+# count = 0
+            break
+        queue.pop(0)
