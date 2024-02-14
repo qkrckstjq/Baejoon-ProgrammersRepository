@@ -1,22 +1,31 @@
-n = int(input())
-row_check = [False] * n
-left = [False] * (2*n-1)
-right = [False] * (2*n-1)
-cnt = 0
+queen = int(input())
+result = 0
+arr = [-1] * queen
 
+def is_Impossible(s, x):
+    for i in range(s, x, 1):
+        if arr[i] == arr[x] or x - i == abs(arr[i] - arr[x]):
+            return True
+    return False
 
-def queen(qn):
-    global n, cnt
-    if qn == n:
-        cnt += 1
-        return
+stack = []
+for i in range(queen - 1, -1, -1):
+    stack.append([i, 0])
+
+while stack:
+    cur_y, cur_x = stack.pop()
+    arr[cur_x] = cur_y
+
+    if cur_x == queen - 1:
+        result += 1
+        continue
     else:
-        for j in range(n):
-            if not row_check[j] and not left[j + qn] and not right[n-1 + qn - j]:
-                row_check[j] = left[j + qn] = right[n-1 + qn - j] = True
-                queen(qn + 1)
-                row_check[j] = left[j + qn] = right[n-1 + qn - j] = False
+        for i in range(queen):
+            arr[cur_x + 1] = i
+            if not is_Impossible(0, cur_x + 1):
+                stack.append([i, cur_x + 1])
 
 
-queen(0)
-print(cnt)
+
+
+print(result)
