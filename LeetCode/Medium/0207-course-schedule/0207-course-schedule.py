@@ -1,6 +1,4 @@
 from collections import defaultdict
-
-
 class Solution:
     def canFinish(self, numCourses, prerequisites) -> bool:
         memo = set()
@@ -9,7 +7,8 @@ class Solution:
         for target, require in prerequisites:
             require_graph[target].append(require)
 
-        for vertex in range(numCourses):
+        courses = list(require_graph.keys())
+        for vertex in courses:
             if vertex in memo:
                 continue
             elif self.has_cycle(require_graph, memo, visit, vertex):
@@ -28,3 +27,7 @@ class Solution:
         visit.remove(node)
         memo.add(node)
         return False
+
+test = Solution()
+# print(test.canFinish(7, [[1,0],[0,3],[0,2],[3,2],[2,5],[4,5],[5,6],[2,4]]))
+print(test.canFinish(3, [[1,0],[1,2],[0,1]]))
