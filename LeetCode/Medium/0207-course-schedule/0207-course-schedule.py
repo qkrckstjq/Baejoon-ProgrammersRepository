@@ -1,28 +1,30 @@
 from collections import defaultdict
 
+
 class Solution:
     def canFinish(self, numCourses, prerequisites) -> bool:
-        visited = set()
         memo = set()
+        visit = set()
         require_graph = defaultdict(list)
         for target, require in prerequisites:
             require_graph[target].append(require)
 
-        for node in range(numCourses):
-            if node not in memo and self.has_cycle(node, require_graph, visited, memo):
+        for vertex in range(numCourses):
+            if vertex in memo:
+                continue
+            elif self.has_cycle(require_graph, memo, visit, vertex):
                 return False
         return True
 
-    def has_cycle(self, start_node, require_graph, visited, memo):
-        if start_node in memo:
+    def has_cycle(self, graph, memo, visit, node):
+        if node in memo:
             return False
-        if start_node in visited:
+        if node in visit:
             return True
-        
-        visited.add(start_node)
-        for require in require_graph[start_node]:
-            if self.has_cycle(require, require_graph, visited, memo):
+        visit.add(node)
+        for require in graph[node]:
+            if self.has_cycle(graph, memo, visit, require):
                 return True
-        visited.remove(start_node)
-        memo.add(start_node)
+        visit.remove(node)
+        memo.add(node)
         return False
