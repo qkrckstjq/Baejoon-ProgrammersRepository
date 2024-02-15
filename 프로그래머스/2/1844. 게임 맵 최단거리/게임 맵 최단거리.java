@@ -19,7 +19,7 @@ class Solution {
             int curY = cur[0];
             int curX = cur[1];
             int steps = cur[2];
-            visit[curY][curX] = true;
+            // visit[curY][curX] = true;
             
             if(curY == goalY && curX == goalX) {
                 return steps;
