@@ -1,41 +1,41 @@
 import sys
-from collections import deque
 
-vowel = set(["a", "e", "i", "o", "u"])
-
-
-def s_input():
-    return sys.stdin.readline().strip()
+# Get Inputs
+L, C = list(map(int, sys.stdin.readline().split(" ")))
+chars = sys.stdin.readline().split()
+chars.sort()
 
 
-def check(str):
-    v_number = 0
-    c_number = 0
-    for c in str:
-        if c in vowel:
-            v_number += 1
-        else:
-            c_number += 1
-    return True if v_number >= 1 and c_number >= 2 else False
+def contains(cur_string: str) -> bool:
+    set_chars = set(chars)
+    set_cur_string = set(cur_string)
+
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    in_consonant = set_chars - vowels
+    in_vowel = set_chars - in_consonant
+
+    cur_consonant = set_cur_string - in_vowel
+    cur_vowel = set_cur_string - cur_consonant
+
+    return len(cur_consonant) > 1 and cur_vowel
 
 
-L, C = list(map(int, s_input().split(" ")))
-sorted_words = sorted(s_input().split(" "))
 
-result = []
-queue = deque()
+def subsets(strs: list):
+    rst = []
 
-for i in range(0, C - L + 1, 1):
-    queue.append((sorted_words[i], i))
+    def dfs(start, visited: str):
+        if len(visited) == L and contains(visited) and visited not in rst:
+            rst.append(visited)
+            return
 
-while queue:
-    cur_str, index = queue.popleft()
-    if len(cur_str) == L and check(cur_str):
-        print(cur_str)
-        continue
-    if len(cur_str) >= L:
-        continue
-    for i in range(index + 1, C, 1):
-        next_str = cur_str + sorted_words[i]
-        queue.append((next_str, i))
+        for i in range(start, len(strs)):
+            dfs(i + 1, visited + strs[start])
 
+    for i in range(C):
+        dfs(i, "")
+    return rst
+
+
+for str in subsets(chars):
+    print(str)
