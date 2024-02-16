@@ -19,17 +19,15 @@ class Solution:
 
         
         start = [i for i in range(numCourses) if indegree[i] == 0] # 선수 강의가 0개인 노드 찾기
-        q = deque(start)
+        stack = start
         
-        while q:
-            pre = q.popleft()
-						# graph = {0: [2, 1], 1: [2]}
-						# indegree = [0, 1, 2]
+        while stack:
+            pre = stack.pop()
             for next in graph[pre]: # 0 --> 1  //// indegree = [0, 1]
                 indegree[next] -= 1   # ndegree # --> [0, 1] -> [0,0]
 								# print(indegree) # ------
                 if indegree[next] == 0: # 선수 강의가 0개이면 다시 큐에 넣는다
-                    q.append(next)
+                    stack.append(next)
             
         # 위의 과정을 마쳤을 때 아직 선수 강의가 남아있는 강의가 있을 경우에는 False를 리턴
         for course in indegree:
