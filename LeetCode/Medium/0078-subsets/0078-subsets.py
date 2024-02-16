@@ -1,25 +1,15 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        result = [[]]
-        stack = []
-        index_stack = []
-        
-        for i in range(len(nums)):
-            stack.append([nums[i]])
-            index_stack.append(i)
+        result = []
+        stack = [([], 0)]
         
         while stack:
-            cur = stack.pop()
-            last_index = index_stack.pop()
-            result.append(list(cur))
-            
-            for i in range(last_index + 1, len(nums)):
-                next = list(cur)
-                next.append(nums[i])
-                stack.append(next)
-                index_stack.append(i)
-        
+            cur_nums, cur_index = stack.pop()
+            result.append(cur_nums)
+            if cur_index > len(nums) - 1:
+                continue
+            for i in range(cur_index, len(nums), 1):
+                temp = list(cur_nums)
+                temp.append(nums[i])
+                stack.append((temp, i + 1))
         return result
-            
-                
-                
