@@ -1,33 +1,40 @@
-from collections import defaultdict
+# https://www.lifencoding.com/algorithm/34?p=1
 class Solution:
-    def canFinish(self, numCourses, prerequisites) -> bool:
-        memo = set()
-        visit = set()
-        require_graph = defaultdict(list)
-        for target, require in prerequisites:
-            require_graph[target].append(require)
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+				
+				# Input: numCourses = 3, prerequisites = [[1,0]]
+				# 선수 강의 수(indegree)가 0 인것부터 그래프를 탐색한다
+				
+				# 그래프 초기화
+        graph = defaultdict(list)
+        indegree = [0] * numCourses # 강의의 선수 강의의 수를 담기 위한 리스트
+        for next, pre in prerequisites:
+            graph[pre].append(next)
+            indegree[next] += 1
 
-        courses = list(require_graph.keys())
-        for vertex in courses:
-            if vertex in memo:
-                continue
-            elif self.has_cycle(require_graph, memo, visit, vertex):
+        # print(graph) # --> ({0: [1]})
+
+				# graph    = {0: [2, 1], 1: [2]}
+				# indegree = [0, 1, 2]
+
+        
+        start = [i for i in range(numCourses) if indegree[i] == 0] # 선수 강의가 0개인 노드 찾기
+        q = deque(start)
+        
+        while q:
+            pre = q.popleft()
+						# graph = {0: [2, 1], 1: [2]}
+						# indegree = [0, 1, 2]
+            for next in graph[pre]: # 0 --> 1  //// indegree = [0, 1]
+                indegree[next] -= 1   # ndegree # --> [0, 1] -> [0,0]
+								# print(indegree) # ------
+                if indegree[next] == 0: # 선수 강의가 0개이면 다시 큐에 넣는다
+                    q.append(next)
+            
+        # 위의 과정을 마쳤을 때 아직 선수 강의가 남아있는 강의가 있을 경우에는 False를 리턴
+        for course in indegree:
+            if course != 0:
                 return False
+        
         return True
 
-    def has_cycle(self, graph, memo, visit, node):
-        if node in memo:
-            return False
-        if node in visit:
-            return True
-        visit.add(node)
-        for require in graph[node]:
-            if self.has_cycle(graph, memo, visit, require):
-                return True
-        visit.remove(node)
-        memo.add(node)
-        return False
-
-test = Solution()
-# print(test.canFinish(7, [[1,0],[0,3],[0,2],[3,2],[2,5],[4,5],[5,6],[2,4]]))
-print(test.canFinish(3, [[1,0],[1,2],[0,1]]))
