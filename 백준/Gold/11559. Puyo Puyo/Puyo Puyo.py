@@ -2,17 +2,13 @@ import sys
 from collections import defaultdict
 def s_input():
     return sys.stdin.readline().strip()
-
 dy = [0, 0, 1, -1]
 dx = [1, -1, 0, 0]
-
 def print_field(field):
     for row in field:
         print(row)
-
 def is_possible(y, x):
     return True if 0 <= y < 12 and 0 <= x < 6 else False
-
 def pull_down(field):
     for x in range(6):
         bottom = find_bottom(field, x)
@@ -22,19 +18,16 @@ def pull_down(field):
             field[next_color][x] = '.'
             bottom -= 1
             next_color = find_color(field, bottom, x)
-
 def find_color(field, y, x):
     next_color = y
     while field[next_color][x] == '.' and next_color >= 0:
         next_color -= 1
     return next_color
-
 def find_bottom(field, x):
     bottom = 11
     while field[bottom][x] != '.' and bottom >= 0:
         bottom -= 1
     return bottom
-
 def find_next(field, visit):
     for y in range(11, -1, -1):
         for x in range(6):
@@ -42,7 +35,6 @@ def find_next(field, visit):
                 visit[y].add(x)
                 return [y, x]
     return [-1, -1]
-
 def remove_all_possibility(field):
     visit = defaultdict(set)
     start_y, start_x = find_next(field, visit)
@@ -53,16 +45,11 @@ def remove_all_possibility(field):
             if dfs(field, start_y, start_x, visit):
                 delete_success = True
                 visit = defaultdict(set)
-                # print_field(field)
-                # print('\n')
             start_y, start_x = find_next(field, visit)
         result += 1 if delete_success else 0
         pull_down(field)
-        # print_field(field)
-        # print('\n')
         start_y, start_x = find_next(field, visit)
     return result
-
 def dfs(field, start_y, start_x, total_visit):
     color = field[start_y][start_x]
     stack = [[start_y, start_x]]
@@ -92,14 +79,4 @@ result = 0
 for i in range(12):
     info = list(s_input())
     field.append(info)
-
 print(remove_all_possibility(field))
-
-
-# print_field(field)
-# print("삭제 시도")
-# remove_all_possibility(field)
-# print_field(field)
-# print("풀다운 시도")
-# pull_down(field)
-
