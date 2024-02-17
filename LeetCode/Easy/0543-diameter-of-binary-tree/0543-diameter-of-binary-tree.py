@@ -1,27 +1,32 @@
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# # Definition for a binary tree node.
+# # class TreeNode:
+# #     def __init__(self, val=0, left=None, right=None):
+# #         self.val = val
+# #         self.left = left
+# #         self.right = right
+# class Solution:
+#     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+#         max_len = {'max' : 0}
+#         self.find_max_len(root, max_len)
+#         return max_len['max']
+    
+#     def find_max_len(self, node, max_len):
+#         if node is None:
+#             return 0
+#         left_len = self.find_max_len(node.left, max_len)
+#         right_len = self.find_max_len(node.right, max_len)
+#         max_len['max'] = max(max_len['max'], left_len + right_len)
+#         return max(self.find_max_len(node.left, max_len), self.find_max_len(node.right, max_len)) + 1
 class Solution:
-    max_len = 0
-    memo = {}
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        self.recursion_tree(root)
-        return self.max_len
-        
-    def recursion_tree(self, root):
-        if root is None:
+        max_len = {'max': 0}
+        self.find_max_len(root, max_len)
+        return max_len['max']
+    
+    def find_max_len(self, node, max_len):
+        if node is None:
             return 0
-        if root in self.memo:
-            return self.memo[root]
-            
-        left_len = self.recursion_tree(root.left)
-        right_len = self.recursion_tree(root.right)
-        self.memo[root] = left_len + right_len + 1
-        self.max_len = max(left_len + right_len, self.max_len)
+        left_len = self.find_max_len(node.left, max_len)
+        right_len = self.find_max_len(node.right, max_len)
+        max_len['max'] = max(max_len['max'], left_len + right_len)
         return max(left_len, right_len) + 1
-        
-            
-        
