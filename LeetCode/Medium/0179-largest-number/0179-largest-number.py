@@ -1,0 +1,73 @@
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        self.merge_sort(nums, 0, len(nums) - 1)
+        print(nums)
+        if sum(nums) == 0:
+            return "0"
+        result = ""
+        for num in nums:
+            result += str(num)
+        return result
+        
+    def merge_sort(self, arr, start, end):
+        if start >= end:
+            return
+        mid = (start + end) // 2
+        self.merge_sort(arr, start, mid)
+        self.merge_sort(arr, mid + 1, end)
+        self.sorting(arr, start, mid, mid + 1, end)
+    
+    def sorting(self, arr, i, i_end, j, j_end):
+        result = []
+        start = i
+        end = j_end
+        while i <= i_end and j <= j_end:
+            if self.compare(arr[i], arr[j]):
+                result.append(arr[i])
+                i += 1
+            else:
+                result.append(arr[j])
+                j += 1
+        while i <= i_end:
+            result.append(arr[i])
+            i += 1
+        while j <= j_end:
+            result.append(arr[j])
+            j += 1
+        result_index = 0
+        for i in range(start, end + 1):
+            arr[i] = result[result_index]
+            result_index += 1
+            
+    def get_one(self, num, index):
+        return int(list(str(num))[index])
+    
+    def compare(self, num1, num2):
+        #True면 num1이 더 큼, false면 반대
+        num1_first = self.get_one(num1, 0)
+        num2_first = self.get_one(num2, 0)
+        num1_list = list(map(int, str(num1)))
+        num2_list = list(map(int, str(num2)))
+        if num1_first > num2_first:
+            return True
+        elif num1_first < num2_first:
+            return False
+        else:
+            i, j = 0, 0
+            same_count = 1
+            while i < len(num1_list) or j < len(num2_list):
+                i = i + 1 if i < len(num1_list) - 1 else 0
+                j = j + 1 if j < len(num2_list) - 1 else 0
+                num1_first = num1_list[i]
+                num2_first = num2_list[j]
+                if num1_first > num2_first:
+                    return True
+                elif num1_first < num2_first:
+                    return False
+                else:
+                    same_count += 1
+                    if same_count > 100:
+                        return False
+            return True
+        
+        
