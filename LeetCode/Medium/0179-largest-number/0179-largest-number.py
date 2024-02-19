@@ -1,13 +1,9 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         self.merge_sort(nums, 0, len(nums) - 1)
-        print(nums)
         if sum(nums) == 0:
             return "0"
-        result = ""
-        for num in nums:
-            result += str(num)
-        return result
+        return ''.join(map(str, nums))
         
     def merge_sort(self, arr, start, end):
         if start >= end:
