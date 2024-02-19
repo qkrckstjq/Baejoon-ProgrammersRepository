@@ -1,8 +1,10 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         self.merge_sort(nums, 0, len(nums) - 1)
-        if sum(nums) == 0:
-            return "0"
+        # if sum(nums) == 0:
+        #     return "0"
+        if self.get_one(nums[0], 0) == 0:
+            return '0'
         return ''.join(map(str, nums))
         
     def merge_sort(self, arr, start, end):
