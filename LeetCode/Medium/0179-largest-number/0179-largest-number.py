@@ -1,8 +1,6 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         self.merge_sort(nums, 0, len(nums) - 1)
-        # if sum(nums) == 0:
-        #     return "0"
         if self.get_one(nums[0], 0) == 0:
             return '0'
         return ''.join(map(str, nums))
@@ -52,22 +50,7 @@ class Solution:
             return False
         else:
             return self.if_same(num1_list, num2_list)
-            # i, j = 0, 0
-            # same_count = 1
-            # while i < len(num1_list) or j < len(num2_list):
-            #     i = i + 1 if i < len(num1_list) - 1 else 0
-            #     j = j + 1 if j < len(num2_list) - 1 else 0
-            #     num1_first = num1_list[i]
-            #     num2_first = num2_list[j]
-            #     if num1_first > num2_first:
-            #         return True
-            #     elif num1_first < num2_first:
-            #         return False
-            #     else:
-            #         same_count += 1
-            #         if same_count > 100:
-            #             return False
-            # return True
+
     def if_same(self, num1_list, num2_list):
         i, j = 0, 0
         same_count = 1
