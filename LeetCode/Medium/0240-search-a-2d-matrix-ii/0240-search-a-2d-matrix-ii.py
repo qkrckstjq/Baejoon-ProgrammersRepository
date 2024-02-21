@@ -2,8 +2,8 @@ from collections import defaultdict
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        #stack = [(len(matrix) // 2, len(matrix[0]) // 2)]
-        stack = [(0, 0)]
+        stack = [(len(matrix) // 2, len(matrix[0]) // 2)]
+        #stack = [(0, 0)]
         visit = defaultdict(set)
         while stack:
             cur_y, cur_x = stack.pop()
