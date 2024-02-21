@@ -1,18 +1,28 @@
-N, M = map(int, input().split())
-tree = list(map(int, input().split()))
-start, end = 1, max(tree) #이분탐색 검색 범위 설정
+import sys
 
-while start <= end: #적절한 벌목 높이를 찾는 알고리즘
-    mid = (start+end) // 2
-    
-    log = 0 #벌목된 나무 총합
-    for i in tree:
-        if i >= mid:
-            log += i - mid
-    
-    #벌목 높이를 이분탐색
-    if log >= M:
-        start = mid + 1
+def s_input():
+    return sys.stdin.readline().strip()
+
+def cut(arr, target):
+    result = 0
+    for value in arr:
+        if value > target:
+            result += (value - target)
+    return result
+
+N, M = list(map(int, s_input().split(" ")))
+trees = list(map(int, s_input().split(" ")))
+min_v = 1
+max_v = max(trees)
+
+while min_v <= max_v:
+    mid_v = (min_v + max_v) // 2
+    cut_v = cut(trees, mid_v)
+    # if cut_v == M:
+    #     print(mid_v)
+    #     break
+    if cut_v < M:
+        max_v = mid_v - 1
     else:
-        end = mid - 1
-print(end)
+        min_v = mid_v + 1
+print(max_v)
