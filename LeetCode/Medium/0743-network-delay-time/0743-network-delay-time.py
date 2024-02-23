@@ -1,23 +1,22 @@
 from collections import defaultdict
-import heapq
 
 class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:        
         graph = defaultdict(dict)
-        for edge in times:
-            src, dst, w = edge
-            graph[src][dst] = w
-            
+        graph[k][k] = 0
         min_heap = []
-        for dst in list(graph[k].keys()):
-            heapq.heappush(min_heap, (graph[k][dst], dst))
-        
-        visit = set()
+        for src, dst, w in times:
+            graph[src][dst] = w
+            if src == k:
+                heapq.heappush(min_heap, (w, dst))
         while min_heap:
-            cur_w, cur_dst = heapq.heappop(min_heap)
-            visit.add(cur_dst)
-            for dst in list(graph[cur_dst].keys()):
-                if (not dst in graph[k] or graph[k][cur_dst] + graph[cur_dst][dst] < graph[k][dst]) and dst != k:
-                    graph[k][dst] = graph[k][cur_dst] + graph[cur_dst][dst]
-                    heapq.heappush(min_heap, (graph[k][dst], dst))
-        return max(list(graph[k].values())) if len(visit) + 1 == n else -1
+            cur_w, cur_src = heapq.heappop(min_heap)
+            for next_dst, w in graph[cur_src].items():
+                next_w = w + cur_w
+                if not next_dst in graph[k] or next_w < graph[k][next_dst]:
+                    graph[k][next_dst] = next_w
+                    heapq.heappush(min_heap, (next_w, next_dst))
+        # print(graph)
+        return -1 if len(list(graph[k].keys())) != n else max(list(graph[k].values()))
+        
+        
