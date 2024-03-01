@@ -10,24 +10,18 @@ while True:
         break
     stack = []
 
-    for w in str_input:
-        if w == '(' or w == '[':
-            stack.append(w)
-        elif w == ')':
-            if stack and stack[-1] == '(':
-                stack.pop()
-            else:
-                stack.append(w)
-                break
-        elif w == ']':
-            if stack and stack[-1] == '[':
-                stack.pop()
-            else:
-                stack.append(w)
-                break
+    for c in str_input:
+        if c == '(' or c == '[':
+            stack.append(c)
+        elif c == ')' and stack and stack[-1] == '(':
+            stack.pop()
+        elif c == ']' and stack and stack[-1] == '[':
+            stack.pop()
+        elif c == ']' or c == ')':
+            stack.append(c)
+            break
 
-
-    if not stack:
+    if len(stack) == 0:
         result.append("yes")
     else:
         result.append("no")
