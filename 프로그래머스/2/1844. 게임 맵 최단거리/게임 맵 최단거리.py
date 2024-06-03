@@ -15,11 +15,9 @@ def solution(maps):
     q = deque()
     start = [0, 0, 0]
     q.append(start)
-    # visit = defaultdict(set)
     maps[0][0] = 0
     while q:
         cur_y, cur_x, cur_v = q.popleft()
-        # visit[cur_y].add(cur_x)
         if cur_y == len_y - 1 and cur_x == len_x - 1:
             return cur_v + 1
         
@@ -27,10 +25,7 @@ def solution(maps):
             next_y = cur_y + dy[i]
             next_x = cur_x + dx[i]
             next_v = cur_v + 1
-            # if check_range(next_y, next_x, len_y, len_x) and not next_x in visit[next_y] and check_possible(next_y, next_x, maps):
-            #     q.append([next_y, next_x, next_v])
-                
-            if check_range(next_y, next_x, len_y, len_x) and check_possible(next_y, next_x, maps):
+            if check_range(next_y, next_x, len_y, len_x) and maps[next_y][next_x] == 1:
                 maps[next_y][next_x] = 0
                 q.append([next_y, next_x, next_v])
     
