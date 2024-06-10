@@ -1,31 +1,14 @@
-# from collections import defaultdict
-
 def solution(genres, plays):
-    answer = []
-    total = {}
-    seperate = {}
+    ans = []
+    total = {} # {장르: 총 재생 횟수}
+    gen = {} # {장르: [(플레이 횟수, 고유번호)]}
     for i in range(len(genres)):
-        if genres[i] in total:
-            total[genres[i]] += plays[i]
-            seperate[genres[i]].append(i)
-        else:
-            total[genres[i]] = plays[i]
-            seperate[genres[i]] = [i]
-    total_list = []
-    
-    for key, value in total.items():
-        total_list.append({key : value})
-    total_list = sorted(total_list, key=lambda x: list(x.values())[0], reverse=True)
-    
-    print(total_list)
-    
-    for i in range(len(total_list)):
-        best_g = list(total_list[i].keys())[0]
-        best_i = sorted(seperate[best_g], key = lambda x:plays[x], reverse=True)
-        if len(best_i) >= 2:
-            answer.append(best_i[0])
-            answer.append(best_i[1])
-        else:
-            answer.append(best_i[0])
-    
-    return answer
+        total[genres[i]] = total.get(genres[i], 0) + plays[i]
+        gen[genres[i]] = gen.get(genres[i], []) + [(plays[i], i)]
+	# 재생 횟수 내림차순으로 장르별 정렬
+    genSort = sorted(total.items(), key=lambda x: x[1], reverse=True)
+	# 재생 횟수 내림차순, 인덱스 오름차순 정렬
+    for (genre, totalPlay) in genSort:
+        gen[genre] = sorted(gen[genre], key=lambda x: (-x[0], x[1]))
+        ans += [idx for (play, idx) in gen[genre][:2]]
+    return ans
