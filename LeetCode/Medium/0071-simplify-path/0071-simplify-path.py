@@ -3,9 +3,11 @@ class Solution:
         splited = path.split('/')
         stack = []
         for s in splited:
-            if s == '..' and stack:
+            if s == '.':
+                continue
+            elif s == '..' and stack:
                 stack.pop()
-            elif s != '' and s != '.' and s != '..':
+            elif s != '' and s != '..':
                 stack.append(s)
                         
         answer = '/'.join(stack)
