@@ -3,9 +3,9 @@ def max_score_optimized(N, T, chapters):
     dp = [0] * (T + 1)
     
     # 각 단원에 대해 DP 갱신
-    for K, S in chapters:
-        for j in range(T, K - 1, -1):  # 뒤에서부터 순회
-            dp[j] = max(dp[j], dp[j - K] + S)
+    for time, value in chapters:
+        for j in range(T, time - 1, -1):  # 뒤에서부터 순회
+            dp[j] = max(dp[j], dp[j - time] + value)
     
     return dp[T]
 
