@@ -24,7 +24,6 @@ while queue:
             heapq.heappush(queue, (total_v, next_src))
 
 # print(d)
-
 for i in range(1, N+1):
     if len(d[i]) == K:
         print(-d[i][0])
