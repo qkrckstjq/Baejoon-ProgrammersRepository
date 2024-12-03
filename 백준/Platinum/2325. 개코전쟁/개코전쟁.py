@@ -53,7 +53,3 @@ for i in range(len(min_route) - 1):
     graph[dst][src] = temp_v
 
 print(result)
-
-
-    
-    
