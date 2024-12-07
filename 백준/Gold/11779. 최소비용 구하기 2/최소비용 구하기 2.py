@@ -30,4 +30,3 @@ while queue:
 print(d[end])
 print(len(route.split(" ")))
 print(route)
-
