@@ -1,13 +1,13 @@
 N = int(input())
-S, M, L, XL, XXL, XXXL = map(int, input().split())
-T, P = map(int, input().split())
+peoples = list(map(int, input().split(" ")))
+T, P = map(int, input().split(" "))
+result1 = 0
+for num in peoples:
+    result1 += (num // T) + (1 if num % T != 0 else 0)
+    # elif num % T == 0:
+    #     result1 += (num // T)
+    # else:
+    #     result1 += (num // T) + 1
 
-total_tshirt_bundles = 0
-for demand in [S, M, L, XL, XXL, XXXL]:
-    total_tshirt_bundles += (demand // T) + (1 if demand % T != 0 else 0)
-
-max_pen_bundles = N // P
-remaining_pens = N % P
-
-print(total_tshirt_bundles)
-print(max_pen_bundles, remaining_pens)
+print(result1)
+print(N // P, N % P)
