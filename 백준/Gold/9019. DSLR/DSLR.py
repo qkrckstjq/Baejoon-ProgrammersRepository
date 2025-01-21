@@ -3,41 +3,37 @@ from collections import deque
 T = int(input())
 
 def bfs(start, target):
-    queue = deque([(int(start), "")])  # 숫자와 경로만 저장
+    queue = deque([(start, "")])
     visit = set()
-    visit.add(int(start))
-    
+    visit.add(start)
     while queue:
         cur_num, cur_c = queue.popleft()
-        if cur_num == int(target):
+        if cur_num == target:
             print(cur_c)
             return
         
-        # D 연산
-        next_d = (cur_num * 2) % 10000
+        next_d = cur_num * 2
+        next_d = next_d % 10000 if next_d > 9999 else next_d
         if next_d not in visit:
             visit.add(next_d)
-            queue.append((next_d, cur_c + "D"))
-        
-        # S 연산
-        next_s = cur_num - 1 if cur_num > 0 else 9999
+            queue.append((next_d, f"{cur_c}D"))
+            
+        next_s = cur_num - 1
+        next_s = 9999 if next_s < 0 else next_s
         if next_s not in visit:
             visit.add(next_s)
-            queue.append((next_s, cur_c + "S"))
+            queue.append((next_s, f"{cur_c}S"))
         
-        # L 연산
-        cur_str = f"{cur_num:04d}"  # 4자리 문자열로 변환
-        next_l = int(cur_str[1:] + cur_str[0])  # 왼쪽 시프트
+        next_l = (cur_num % 1000) * 10 + cur_num // 1000
         if next_l not in visit:
             visit.add(next_l)
-            queue.append((next_l, cur_c + "L"))
+            queue.append((next_l, f"{cur_c}L"))
         
-        # R 연산
-        next_r = int(cur_str[-1] + cur_str[:-1])  # 오른쪽 시프트
+        next_r = ((cur_num % 10) * 1000) + (cur_num // 10)
         if next_r not in visit:
             visit.add(next_r)
-            queue.append((next_r, cur_c + "R"))
-
+            queue.append((next_r, f"{cur_c}R"))
+            
 for _ in range(T):
-    start, target = input().split()
+    start, target = map(int, input().split(" ")) 
     bfs(start, target)
