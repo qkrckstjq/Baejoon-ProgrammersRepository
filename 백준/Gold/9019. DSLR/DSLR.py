@@ -16,23 +16,23 @@ def bfs(start, target):
         next_d = next_d % 10000 if next_d > 9999 else next_d
         if not visit[next_d]:
             visit[next_d] = True
-            queue.append((next_d, f"{cur_c}D"))
+            queue.append((next_d, cur_c + "D"))
             
         next_s = cur_num - 1
         next_s = 9999 if next_s < 0 else next_s
         if not visit[next_s]:
             visit[next_s] = True
-            queue.append((next_s, f"{cur_c}S"))
+            queue.append((next_s, cur_c + "S"))
         
         next_l = (cur_num % 1000) * 10 + cur_num // 1000
         if not visit[next_l]:
             visit[next_l] = True
-            queue.append((next_l, f"{cur_c}L"))
+            queue.append((next_l, cur_c + "L"))
         
         next_r = ((cur_num % 10) * 1000) + (cur_num // 10)
         if not visit[next_r]:
             visit[next_r] = True
-            queue.append((next_r, f"{cur_c}R"))
+            queue.append((next_r, cur_c + "R"))
             
 for _ in range(T):
     start, target = map(int, input().split(" ")) 
