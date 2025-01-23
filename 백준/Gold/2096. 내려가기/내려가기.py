@@ -1,33 +1,27 @@
-N = int(input())
-prev_max = [0, 0, 0]
-max_num = [0, 0, 0]
+import sys
+input = sys.stdin.readline
 
-min_num = [0, 0, 0]
-prev_min = [0, 0, 0]
+n = int(input())
 
-def get_value(x, max_cur, min_cur):
-    if x == 0:
-        return [max([max_cur + prev_max[0], max_cur + prev_max[1]]), min([min_cur + prev_min[0], min_cur + prev_min[1]])]
-    elif x == 1:
-        return [max([max_cur + prev_max[0], max_cur + prev_max[1], max_cur + prev_max[2]]), min([min_cur + prev_min[0], min_cur + prev_min[1], min_cur + prev_min[2]])]
-    else:
-        return [max([max_cur + prev_max[1], max_cur + prev_max[2]]), min([min_cur + prev_min[1], min_cur + prev_min[2]])] 
+prev_max = list(map(int, input().split()))
+prev_min = prev_max[:]
 
-for i in range(N):
-    row = list(map(int, input().split(" ")))
-    if i > 0:
-        max_num = [num for num in row]
-        min_num = [num for num in row]
-        for j in range(3):
-            max_num[j], min_num[j] = get_value(j, max_num[j], min_num[j])
-        prev_max = [num for num in max_num]
-        prev_min = [num for num in min_num]
-    else:
-        prev_max = [num for num in row]
-        prev_min = [num for num in row]
-        
-        max_num = [num for num in row]
-        min_num = [num for num in row]
-    
+for i in range(1, n):
+    cur = list(map(int, input().split()))
 
-print(max(max_num), min(min_num))
+    cur_max = [
+        cur[0] + max(prev_max[0], prev_max[1]),
+        cur[1] + max(prev_max[0], prev_max[1], prev_max[2]),
+        cur[2] + max(prev_max[1], prev_max[2])
+    ]
+
+    cur_min = [
+        cur[0] + min(prev_min[0], prev_min[1]),
+        cur[1] + min(prev_min[0], prev_min[1], prev_min[2]),
+        cur[2] + min(prev_min[1], prev_min[2])
+    ]
+
+    prev_max, prev_min = cur_max, cur_min
+
+maxVal, minVal = max(prev_max), min(prev_min)
+print(maxVal, minVal)
