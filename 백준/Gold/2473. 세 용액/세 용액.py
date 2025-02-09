@@ -1,11 +1,11 @@
 N = int(input())
 numbers = list(map(int, input().split(" ")))
 numbers.sort()
-answer = [1000000000, 1000000000, 1000000000]
+answer = [0, float('inf'), 0]
 for i in range(N - 2):
     j = i + 1
     k = N - 1
-    if sum(answer) == 0:
+    if answer[0] + answer[1] + answer[2] == 0:
         break
     while j < k:
         sum_num = numbers[i] + numbers[j] + numbers[k]
