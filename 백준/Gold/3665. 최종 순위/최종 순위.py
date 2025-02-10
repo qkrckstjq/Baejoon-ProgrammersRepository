@@ -1,4 +1,3 @@
-from collections import deque
 T = int(input())
 
 for _ in range(T):
@@ -28,26 +27,26 @@ for _ in range(T):
             indegree[a] -= 1
             indegree[b] += 1
     
-    queue = deque()
+    stack = []
     for i in range(1, n + 1):
         if indegree[i] == 0:
-            queue.append(i)
+            stack.append(i)
     answer = []
     
     find = 0
     for i in range(n):
-        if len(queue) == 0:
+        if len(stack) == 0:
             find = 1
             break
-        elif len(queue) > 1:
+        elif len(stack) > 1:
             find = 2
             break
-        cur_node = queue.popleft()
+        cur_node = stack.pop()
         answer.append(cur_node)
         for next_node in graph[cur_node]:
             indegree[next_node] -= 1
             if indegree[next_node] < 1:
-                queue.append(next_node)
+                stack.append(next_node)
     
     if find == 0:
         print(" ".join(list(map(str, answer))))
