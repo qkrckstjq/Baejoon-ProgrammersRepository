@@ -9,6 +9,8 @@ cycle = set()
 visit = set()
 answer = 0
 def dfs(node):
+    if node in visit:
+        return True
     if node in cycle:
         return False
     cycle.add(node)
