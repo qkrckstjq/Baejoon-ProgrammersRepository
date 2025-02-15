@@ -11,5 +11,7 @@ for L, C in pipes:
         for j in range(1, C + 1):
             if i - L * j >= 0:
                 dp[i] += dp[i - L * j]
+            else:
+                break
 
 print(dp[-1])
