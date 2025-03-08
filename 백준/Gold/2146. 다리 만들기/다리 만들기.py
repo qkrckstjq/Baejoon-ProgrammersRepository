@@ -57,3 +57,5 @@ for y in range(N):
             min_len = min(bfs(y, x, index_island[y][x]), min_len) 
 
 print(min_len)
+        
+            
