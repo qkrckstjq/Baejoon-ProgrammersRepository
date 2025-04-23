@@ -1,27 +1,22 @@
 import sys
-import math
 
-def main():
-    # 입력
-    s0, X, M, D, K = map(int, sys.stdin.readline().split())
+s0, X, M, D, K = map(int, input().split())
 
-    # 주기길이는 M/gcd(X,M)이고, 이 수열에서 최대값은 (M - g + (s0 % g))
-    g = math.gcd(X, M)
-    r = s0 % g
-    max_s = M - g + r
+def gcd(a, b):
+    a, b = abs(a), abs(b)
+    while b != 0:
+        a, b = b, a % b
+    return a
 
-    # 모든 s_i가 0인 경우(별이 전혀 떨어지지 않음)
-    if max_s == 0:
-        print(0)
-        return
+g = gcd(X, M)
+r = s0 % g
+max_s = M - g + r
 
-    # 청소 없이 버틸 수 있는 최대 일수
-    R = K // max_s
+# 별이 전혀 쌓이지 않으면 0을 출력하고 바로 종료
+if max_s == 0:
+    print(0)
+    sys.exit()
 
-    # D일을 커버하기 위한 최소 청소 횟수
-    # 초기 상태는 깨끗하므로 첫 구간 전 청소는 필요 없음
-    cleans = (D - 1) // R
-    print(cleans)
-
-if __name__ == "__main__":
-    main()
+R = K // max_s
+cleans = (D - 1) // R
+print(cleans)
