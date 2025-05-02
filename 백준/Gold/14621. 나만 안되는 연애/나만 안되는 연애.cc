@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <set>
 using namespace std;
 
@@ -9,7 +9,7 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 	vector<char> info(n + 1);
-	map<int, map<int, int>> graph;
+	unordered_map<int, unordered_map<int, int>> graph;
 	vector<pair<int, int>> queue;
 	make_heap(queue.begin(), queue.end());
 	set<int> visit;
