@@ -12,7 +12,7 @@ int main() {
 	unordered_map<int, unordered_map<int, int>> graph;
 	vector<pair<int, int>> queue;
 	make_heap(queue.begin(), queue.end());
-	set<int> visit;
+	vector<bool> visit(n + 1, false);
 
 	char gender;
 	for (int i = 1; i <= n; i++) {
@@ -46,17 +46,17 @@ int main() {
 		int cur_dst = -cur_node.first;
 		int cur_v = cur_node.second;
 
-		if (visit.count(cur_v)) {
+		if (visit[cur_v]) {
 			continue;
 		}
-		visit.insert(cur_v);
+		visit[cur_v] = true;
 
 		result += cur_dst;
 		cnt += 1;
 		char cur_gender = info[cur_v];
 		for (auto &[next_v, next_dst] : graph[cur_v]) {
 			char next_gender = info[next_v];
-			if (!visit.count(next_v) && cur_gender != next_gender) {
+			if (!visit[next_v] && cur_gender != next_gender) {
 				queue.push_back({ -next_dst, next_v });
 				push_heap(queue.begin(), queue.end());
 			}
