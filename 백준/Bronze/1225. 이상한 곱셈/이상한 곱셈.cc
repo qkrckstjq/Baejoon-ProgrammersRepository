@@ -3,16 +3,14 @@
 using namespace std;
 
 int main() {
-	string a, b;
-	cin >> a >> b;
+    string a, b;
+    cin >> a >> b;
 
-	long long result = 0;
-	for (int i = 0; i < a.size(); i++) {
-		for (int j = 0; j < b.size(); j++) {
-			result += ((a[i] - '0') * (b[j] - '0'));
-		}
-	}
+    long long sumA = 0, sumB = 0;
 
-	cout << result;
+    for (char ch : a) sumA += (ch - '0');
+    for (char ch : b) sumB += (ch - '0');
+
+    cout << sumA * sumB << '\n';
 	return 0;
 }
