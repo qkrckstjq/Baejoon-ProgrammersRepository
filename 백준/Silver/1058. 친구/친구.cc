@@ -7,33 +7,29 @@
 using namespace std;
 
 int find_friends(int n, map<int, vector<int>>& graph) {
-    set<int> visit;
-    vector<pair<int, int>> stack;
+	int result = -1;
+	set<int> visit;
+	vector<pair<int, int>> stack;
 
-    // 1) 자기 자신은 미리 방문 처리 (count할 때 제외하기 위해)
-    visit.insert(n);
-    stack.push_back({ n, 0 });
+	visit.insert(n);
+	stack.push_back({ n, 0 });
 
-    // 2) DFS 스택 순회하되, depth가 2 이상이면 더 뻗지 않음
-    while (!stack.empty()) {
-        auto [curNode, depth] = stack.back();
-        stack.pop_back();
+	while (!stack.empty()) {
+		auto [curNode, depth] = stack.back();
+		stack.pop_back();
+		
+		result += 1;
+		if (depth == 2) continue;
 
-        // depth == 2이면 친구(1)과 친구의 친구(2)까지만 허용하고 그 이후는 탐색 안 함
-        if (depth == 2)
-            continue;
+		for (int nextNode : graph[curNode]) {
+			if (!visit.count(nextNode)) {
+				visit.insert(nextNode);
+				stack.push_back({ nextNode, depth + 1 });
+			}
+		}
+	}
 
-        for (int nextNode : graph[curNode]) {
-            if (!visit.count(nextNode)) {
-                // 새로 만난 친구이니 방문 처리하고 스택에 넣어준다
-                visit.insert(nextNode);
-                stack.push_back({ nextNode, depth + 1 });
-            }
-        }
-    }
-
-    // 전체 방문한 사람 수에서 자기 자신 한 명을 빼면 친구·친구의 친구 수
-    return static_cast<int>(visit.size()) - 1;
+	return result;
 }
 
 int main() {
