@@ -1,25 +1,11 @@
-def solution(n, w, num):
-    answer = 0
-    for i in range(1, w + 1):
-        y1 = (w * 2) - 1 - ((i - 1) * 2)
-        y2 = 1 + ((i - 1) * 2)
-        c = True
-        while True:
-            if i >= num:
-                break
-                
-            i += (y1 if c else y2)
-            c = not c
-            
-        if i == num:
-            
-            answer = 1
-            while True:
-                i += (y1 if c else y2)
-                c = not c    
-                if i > n:
-                    break
-                else:
-                    answer += 1
 
-    return answer
+2
+3
+4
+5
+6
+def solution(n, w, num):
+    m1 = num%(w*2)
+    m2 = ((w*2+1) - m1)%(w*2)
+    # num 이상 n 이하의 수들 중 2*w로 나눈 나머지가 m1,m2인 것들의 수를 세면 된다.
+    return len(range(num,n+1,w*2)) + len(range(num + (m2-m1)%(w*2), n+1, w*2))
