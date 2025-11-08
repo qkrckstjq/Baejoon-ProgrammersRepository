@@ -1,16 +1,82 @@
-import java.util.stream.*;
 class Solution {
-    public int solution(int n) {
-        boolean[] primeArr = new boolean[101];
-        for(int i = 2; i < (int) Math.sqrt(101); i++) {
-            if(!primeArr[i]) {
-                for(int j = i * i; j < 101; j += i) {
-                    primeArr[j] = true;
-                } 
-            }
-        }
-        return IntStream.range(0, n + 1)
-            .boxed()
-            .reduce(0, (result, i) -> (result + (primeArr[i] ? 1 : 0)));
-    }
+   public int solution(int n) {
+    return switch (n) {
+        case 1, 2, 3 -> 0;
+        case 4, 5 -> 1;
+        case 6, 7 -> 2;
+        case 8 -> 3;
+        case 9 -> 4;
+        case 10, 11 -> 5;
+        case 12 -> 6;
+        case 13, 14 -> 7;
+        case 15 -> 8;
+        case 16 -> 9;
+        case 17, 18 -> 10;
+        case 19, 20 -> 11;
+        case 21 -> 12;
+        case 22 -> 13;
+        case 23, 24 -> 14;
+        case 25 -> 15;
+        case 26 -> 16;
+        case 27 -> 17;
+        case 28, 29 -> 18;
+        case 30, 31 -> 19;
+        case 32 -> 20;
+        case 33 -> 21;
+        case 34 -> 22;
+        case 35 -> 23;
+        case 36, 37 -> 24;
+        case 38 -> 25;
+        case 39 -> 26;
+        case 40, 41 -> 27;
+        case 42, 43 -> 28;
+        case 44 -> 29;
+        case 45 -> 30;
+        case 46, 47 -> 31;
+        case 48 -> 32;
+        case 49 -> 33;
+        case 50 -> 34;
+        case 51 -> 35;
+        case 52, 53 -> 36;
+        case 54 -> 37;
+        case 55 -> 38;
+        case 56 -> 39;
+        case 57 -> 40;
+        case 58, 59 -> 41;
+        case 60, 61 -> 42;
+        case 62 -> 43;
+        case 63 -> 44;
+        case 64 -> 45;
+        case 65 -> 46;
+        case 66, 67 -> 47;
+        case 68 -> 48;
+        case 69 -> 49;
+        case 70, 71 -> 50;
+        case 72, 73 -> 51;
+        case 74 -> 52;
+        case 75 -> 53;
+        case 76 -> 54;
+        case 77 -> 55;
+        case 78, 79 -> 56;
+        case 80 -> 57;
+        case 81 -> 58;
+        case 82, 83 -> 59;
+        case 84 -> 60;
+        case 85 -> 61;
+        case 86 -> 62;
+        case 87 -> 63;
+        case 88, 89 -> 64;
+        case 90 -> 65;
+        case 91 -> 66;
+        case 92 -> 67;
+        case 93 -> 68;
+        case 94 -> 69;
+        case 95, 96 -> 70;
+        case 97 -> 71;
+        case 98 -> 72;
+        case 99 -> 73;
+        case 100 -> 74;
+        default -> 69741592;
+    };
+}
 }
