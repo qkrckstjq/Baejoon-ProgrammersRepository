@@ -11,13 +11,13 @@ class Main {
     }
     
     public static String recursion(String sNum) {
-        while(sNum.length() > 1) {
-            int temp = 0;
-            for(int i = 0; i < sNum.length(); i++) {
-                temp += sNum.charAt(i) - '0';
-            }
-            sNum = Integer.toString(temp);
+        if(sNum.length() == 1) {
+            return sNum;
         }
-        return sNum;
+        int temp = 0;
+        for(int i = 0; i < sNum.length(); i++) {
+            temp += sNum.charAt(i) - '0';
+        }
+        return recursion(Integer.toString(temp));
     }
 }
