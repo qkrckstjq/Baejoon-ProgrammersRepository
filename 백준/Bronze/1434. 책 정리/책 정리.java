@@ -7,10 +7,10 @@ class Main {
        String input = rd.readLine();
        int sumA = Arrays.stream(rd.readLine().split(" "))
            .mapToInt(Integer::parseInt)
-           .reduce(0, (result, a) -> result + a);
+           .sum();
        int sumB = Arrays.stream(rd.readLine().split(" "))
            .mapToInt(Integer::parseInt)
-           .reduce(0, (result, a) -> result + a);
+           .sum();
        System.out.println(sumA - sumB);
     }
 }
