@@ -4,6 +4,7 @@ class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(rd.readLine());
+        StringBuilder answer = new StringBuilder("");
         for(int i = 0; i < t; i++) {
             int minEven = Integer.MAX_VALUE;
             int result = 0;
@@ -15,7 +16,8 @@ class Main {
                     minEven = Math.min(minEven, num);
                 }
             }
-            System.out.printf("%d %d\n", result, minEven);
+            answer.append(result + " " + minEven).append("\n");
         }
+        System.out.println(answer.toString());
     }
 }
