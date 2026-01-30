@@ -9,12 +9,17 @@ class Main {
         while(0 < T--) {
             String temp = rd.readLine();
             String[] sb = rd.readLine().split(" ");
-            int s = Arrays.stream(rd.readLine().split(" "))
-                .map(Integer::parseInt)
-                .reduce(0, (result, n) -> Math.max(result, n));
-            int b = Arrays.stream(rd.readLine().split(" "))
-                .map(Integer::parseInt)
-                .reduce(0, (result, n) -> Math.max(result, n));
+            String[] sList = rd.readLine().split(" ");
+            String[] bList = rd.readLine().split(" ");
+            int s = 0;
+            int b = 0;
+            for(String num : sList) {
+                s = Math.max(Integer.parseInt(num), s);
+            }
+            for(String num : bList) {
+                b = Math.max(Integer.parseInt(num), b);
+            }
+            
             if(s >= b) {
                 System.out.println("S");
             } else {
