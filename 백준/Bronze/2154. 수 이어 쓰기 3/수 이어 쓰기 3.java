@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     static int[] prefix(char[] p) {
@@ -15,17 +16,24 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine().trim());
 
-        char[] p = String.valueOf(n).toCharArray();
+        char[] p = Integer.toString(n).toCharArray();
         int m = p.length;
         int[] pi = prefix(p);
+
+        char[] buf = new char[10];
 
         int j = 0;
         int pos = 0;
 
         for (int x = 1; x <= n; x++) {
-            char[] s = String.valueOf(x).toCharArray();
-            for (int k = 0; k < s.length; k++) {
-                char c = s[k];
+            int t = x;
+            int idx = 10;
+            while (t > 0) {
+                buf[--idx] = (char) ('0' + (t % 10));
+                t /= 10;
+            }
+            for (int k = idx; k < 10; k++) {
+                char c = buf[k];
                 pos++;
 
                 while (j > 0 && c != p[j]) j = pi[j - 1];
