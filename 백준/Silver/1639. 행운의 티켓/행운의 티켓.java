@@ -17,8 +17,8 @@ class Main {
                     
                     for(int j = k + num; j < k + num * 2; j++) {
                         sumB += input.charAt(j) - '0';
+                        if(sumB > sumA) break;
                     }
-                    // System.out.printf("%d, %d\n", sumA, sumB);
                     if(sumA == sumB) answer = num;
                 } else {
                     break;
