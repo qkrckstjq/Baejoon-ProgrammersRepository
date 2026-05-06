@@ -1,0 +1,6 @@
+-- 코드를 입력하세요
+SELECT r.FOOD_TYPE, r.REST_ID, r.REST_NAME, r.FAVORITES from REST_INFO r
+left join (select FOOD_TYPE, MAX(FAVORITES) as FAVORITES from REST_INFO group by FOOD_TYPE) r2
+on r.FAVORITES = r2.FAVORITES and r.FOOD_TYPE = r2.FOOD_TYPE
+where r2.FAVORITES is NOT NULL
+order by r.FOOD_TYPE desc
