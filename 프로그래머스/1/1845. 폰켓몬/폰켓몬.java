@@ -1,16 +1,9 @@
 import java.util.*;
-
 class Solution {
     public int solution(int[] nums) {
-        int answer = 0;
-        
+        int n = nums.length;
         Set<Integer> set = new HashSet<>();
-        for(Integer i : nums) {
-            set.add(i);
-        }
-        Integer removed = set.size();
-        Integer half = nums.length / 2;
-        return removed > half ? half : removed; 
-        
+        for(int num : nums) set.add(num);
+        return Math.min(set.size(), n / 2);
     }
 }
