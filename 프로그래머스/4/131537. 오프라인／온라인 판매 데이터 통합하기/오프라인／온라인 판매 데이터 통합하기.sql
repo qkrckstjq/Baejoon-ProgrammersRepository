@@ -1,0 +1,23 @@
+-- 코드를 입력하세요
+(SELECT 
+o.SALES_DATE,
+o.PRODUCT_ID,
+o.USER_ID,
+o.SALES_AMOUNT
+from ONLINE_SALE o
+where YEAR(o.SALES_DATE) = 2022 and MONTH(o.SALES_DATE) = 3
+
+union all
+
+SELECT 
+o.SALES_DATE,
+o.PRODUCT_ID,
+NULL as USER_ID,
+o.SALES_AMOUNT
+from OFFLINE_SALE o
+where YEAR(o.SALES_DATE) = 2022 and MONTH(o.SALES_DATE) = 3
+)
+order by SALES_DATE asc, PRODUCT_ID asc, USER_ID asc
+# select * from OFFLINE_SALE
+
+
