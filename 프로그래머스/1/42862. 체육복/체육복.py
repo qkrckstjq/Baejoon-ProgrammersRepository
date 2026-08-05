@@ -1,17 +1,28 @@
 def solution(n, lost, reserve):
-    new_lost = set(lost) - set(reserve)
-    new_reserve = set(reserve) - set(lost)
+    answer = 0
+    lost_s = set(lost)
+    reserve_d = set(reserve)
+    for l in lost:
+        if l in reserve_d:
+            lost_s.remove(l)
+            reserve_d.remove(l)
     
-    count = 0  
-    
-    for i in new_lost:
-        if (i - 1) in new_reserve:
-            new_reserve.remove(i - 1)
-            count += 1
-        elif (i + 1) in new_reserve:
-            new_reserve.remove(i + 1)
-            count += 1
+    for i in range(1, n + 1):
+        if not i in lost_s:
+            answer += 1
+            continue
             
-    answer = len(new_lost) - count;
-    
-    return n - answer
+        if i in lost_s:
+            front = i - 1
+            back = i + 1
+            if front in reserve_d:
+                answer += 1
+                reserve_d.remove(front)
+                continue
+                
+            if back in reserve_d:
+                answer += 1
+                reserve_d.remove(back)
+                continue
+                
+    return answer
