@@ -15,4 +15,12 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [0182-duplicate-emails](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0182-duplicate-emails) |
 | [0183-customers-who-never-order](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0183-customers-who-never-order) |
 | [0184-department-highest-salary](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0184-department-highest-salary) |
+## Array
+|  |
+| ------- |
+| [3718-smallest-missing-multiple-of-k](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3718-smallest-missing-multiple-of-k) |
+## Hash Table
+|  |
+| ------- |
+| [3718-smallest-missing-multiple-of-k](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3718-smallest-missing-multiple-of-k) |
 <!---LeetCode Topics End-->
