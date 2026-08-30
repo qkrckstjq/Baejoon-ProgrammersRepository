@@ -26,6 +26,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [0584-find-customer-referee](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0584-find-customer-referee) |
 | [0585-investments-in-2016](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0585-investments-in-2016) |
 | [0586-customer-placing-the-largest-number-of-orders](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0586-customer-placing-the-largest-number-of-orders) |
+| [0595-big-countries](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0595-big-countries) |
 ## Array
 |  |
 | ------- |
