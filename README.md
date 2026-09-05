@@ -37,6 +37,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [0620-not-boring-movies](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0620-not-boring-movies) |
 | [0626-exchange-seats](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0626-exchange-seats) |
 | [0627-swap-sex-of-employees](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0627-swap-sex-of-employees) |
+| [1045-customers-who-bought-all-products](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1045-customers-who-bought-all-products) |
 ## Array
 |  |
 | ------- |
