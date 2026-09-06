@@ -40,6 +40,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1045-customers-who-bought-all-products](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1045-customers-who-bought-all-products) |
 | [1050-actors-and-directors-who-cooperated-at-least-three-times](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1050-actors-and-directors-who-cooperated-at-least-three-times) |
 | [1068-product-sales-analysis-i](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1068-product-sales-analysis-i) |
+| [1070-product-sales-analysis-iii](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1070-product-sales-analysis-iii) |
 ## Array
 |  |
 | ------- |
