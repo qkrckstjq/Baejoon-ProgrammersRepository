@@ -42,6 +42,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1068-product-sales-analysis-i](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1068-product-sales-analysis-i) |
 | [1070-product-sales-analysis-iii](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1070-product-sales-analysis-iii) |
 | [1075-project-employees-i](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1075-project-employees-i) |
+| [1084-sales-analysis-iii](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1084-sales-analysis-iii) |
 ## Array
 |  |
 | ------- |
