@@ -51,6 +51,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1179-reformat-department-table](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1179-reformat-department-table) |
 | [1204-last-person-to-fit-in-the-bus](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1204-last-person-to-fit-in-the-bus) |
 | [1211-queries-quality-and-percentage](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1211-queries-quality-and-percentage) |
+| [1251-average-selling-price](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1251-average-selling-price) |
 ## Array
 |  |
 | ------- |
