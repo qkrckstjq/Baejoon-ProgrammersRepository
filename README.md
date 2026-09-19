@@ -52,6 +52,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1204-last-person-to-fit-in-the-bus](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1204-last-person-to-fit-in-the-bus) |
 | [1211-queries-quality-and-percentage](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1211-queries-quality-and-percentage) |
 | [1251-average-selling-price](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1251-average-selling-price) |
+| [1327-list-the-products-ordered-in-a-period](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1327-list-the-products-ordered-in-a-period) |
 ## Array
 |  |
 | ------- |
