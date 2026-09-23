@@ -49,6 +49,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1164-product-price-at-a-given-date](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1164-product-price-at-a-given-date) |
 | [1174-immediate-food-delivery-ii](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1174-immediate-food-delivery-ii) |
 | [1179-reformat-department-table](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1179-reformat-department-table) |
+| [1193-monthly-transactions-i](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1193-monthly-transactions-i) |
 | [1204-last-person-to-fit-in-the-bus](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1204-last-person-to-fit-in-the-bus) |
 | [1211-queries-quality-and-percentage](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1211-queries-quality-and-percentage) |
 | [1251-average-selling-price](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1251-average-selling-price) |
