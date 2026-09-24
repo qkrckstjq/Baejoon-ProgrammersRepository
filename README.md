@@ -59,9 +59,14 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 ## Array
 |  |
 | ------- |
+| [0118-pascals-triangle](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0118-pascals-triangle) |
 | [3718-smallest-missing-multiple-of-k](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3718-smallest-missing-multiple-of-k) |
 ## Hash Table
 |  |
 | ------- |
 | [3718-smallest-missing-multiple-of-k](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3718-smallest-missing-multiple-of-k) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0118-pascals-triangle](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0118-pascals-triangle) |
 <!---LeetCode Topics End-->
