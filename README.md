@@ -55,6 +55,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1251-average-selling-price](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1251-average-selling-price) |
 | [1280-students-and-examinations](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1280-students-and-examinations) |
 | [1327-list-the-products-ordered-in-a-period](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1327-list-the-products-ordered-in-a-period) |
+| [1341-movie-rating](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1341-movie-rating) |
 ## Array
 |  |
 | ------- |
