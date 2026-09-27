@@ -60,6 +60,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1378-replace-employee-id-with-the-unique-identifier](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1378-replace-employee-id-with-the-unique-identifier) |
 | [1393-capital-gainloss](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1393-capital-gainloss) |
 | [1407-top-travellers](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1407-top-travellers) |
+| [1484-group-sold-products-by-the-date](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1484-group-sold-products-by-the-date) |
 ## Array
 |  |
 | ------- |
