@@ -70,6 +70,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1667-fix-names-in-a-table](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1667-fix-names-in-a-table) |
 | [1683-invalid-tweets](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1683-invalid-tweets) |
 | [1693-daily-leads-and-partners](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1693-daily-leads-and-partners) |
+| [1729-find-followers-count](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1729-find-followers-count) |
 ## Array
 |  |
 | ------- |
