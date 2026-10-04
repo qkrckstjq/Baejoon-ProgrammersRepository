@@ -76,6 +76,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1757-recyclable-and-low-fat-products](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1757-recyclable-and-low-fat-products) |
 | [1789-primary-department-for-each-employee](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1789-primary-department-for-each-employee) |
 | [1795-rearrange-products-table](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1795-rearrange-products-table) |
+| [1873-calculate-special-bonus](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1873-calculate-special-bonus) |
 ## Array
 |  |
 | ------- |
