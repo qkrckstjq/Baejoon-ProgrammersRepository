@@ -79,6 +79,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1873-calculate-special-bonus](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1873-calculate-special-bonus) |
 | [1890-the-latest-login-in-2020](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1890-the-latest-login-in-2020) |
 | [1907-count-salary-categories](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1907-count-salary-categories) |
+| [1934-confirmation-rate](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1934-confirmation-rate) |
 ## Array
 |  |
 | ------- |
