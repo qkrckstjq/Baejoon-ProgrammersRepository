@@ -83,6 +83,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [1965-employees-with-missing-information](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1965-employees-with-missing-information) |
 | [1978-employees-whose-manager-left-the-company](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/1978-employees-whose-manager-left-the-company) |
 | [2356-number-of-unique-subjects-taught-by-each-teacher](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/2356-number-of-unique-subjects-taught-by-each-teacher) |
+| [3220-odd-and-even-transactions](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3220-odd-and-even-transactions) |
 ## Array
 |  |
 | ------- |
