@@ -87,6 +87,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [3421-find-students-who-improved](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3421-find-students-who-improved) |
 | [3436-find-valid-emails](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3436-find-valid-emails) |
 | [3465-find-products-with-valid-serial-numbers](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3465-find-products-with-valid-serial-numbers) |
+| [3475-dna-pattern-recognition](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3475-dna-pattern-recognition) |
 ## Array
 |  |
 | ------- |
