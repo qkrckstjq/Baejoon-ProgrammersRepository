@@ -86,6 +86,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 | [3220-odd-and-even-transactions](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3220-odd-and-even-transactions) |
 | [3421-find-students-who-improved](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3421-find-students-who-improved) |
 | [3436-find-valid-emails](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3436-find-valid-emails) |
+| [3465-find-products-with-valid-serial-numbers](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3465-find-products-with-valid-serial-numbers) |
 ## Array
 |  |
 | ------- |
