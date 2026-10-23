@@ -96,6 +96,7 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 |  |
 | ------- |
 | [0118-pascals-triangle](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0118-pascals-triangle) |
+| [3644-maximum-k-to-sort-a-permutation](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3644-maximum-k-to-sort-a-permutation) |
 | [3718-smallest-missing-multiple-of-k](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3718-smallest-missing-multiple-of-k) |
 ## Hash Table
 |  |
@@ -105,4 +106,8 @@ This is a auto push repository for Baekjoon & Programmers & LeetCode
 |  |
 | ------- |
 | [0118-pascals-triangle](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/0118-pascals-triangle) |
+## Bit Manipulation
+|  |
+| ------- |
+| [3644-maximum-k-to-sort-a-permutation](https://github.com/qkrckstjq/Baejoon-ProgrammersRepository/tree/master/3644-maximum-k-to-sort-a-permutation) |
 <!---LeetCode Topics End-->
